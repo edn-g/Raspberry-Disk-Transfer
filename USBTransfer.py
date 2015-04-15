@@ -9,6 +9,19 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 
+class HeaderWidget(QLabel):
+    def __init__(self):
+        super(HeaderWidget, self).__init__('Raspberry USB Transfer')
+        self.setContentsMargins(4, 4, 4, 4)
+        palette = QPalette()
+        palette.setColor(QPalette.Window, Qt.darkGray)
+        palette.setColor(QPalette.WindowText, Qt.lightGray)
+        self.setAutoFillBackground(True)
+        self.setPalette(palette)
+        self.setFont(QFont("Verdana", 12, QFont.Bold))
+        self.setAlignment(Qt.AlignCenter)
+
+
 class USBTransfer(QApplication):
     """Application window"""
 
@@ -23,7 +36,7 @@ class USBTransfer(QApplication):
 
         # Main window
         self._main_window = QMainWindow()
-        self._main_window.resize(width, height)
+        self._main_window.setFixedSize(width, height)
         self._main_window.setWindowTitle('USBDiskReader')
         self._main_window.setWindowIcon(QIcon('icon.png'))
 
@@ -35,7 +48,10 @@ class USBTransfer(QApplication):
         self._main_window.setCentralWidget(main_widget)
 
         # Elements layout
-        main_layout = QHBoxLayout(self._main_window.centralWidget())
+        main_layout = QVBoxLayout(self._main_window.centralWidget())
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.addWidget(HeaderWidget())
+        main_layout.addStretch(1)
 
     # Run and display application
     def run(self):
