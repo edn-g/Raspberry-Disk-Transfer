@@ -3,7 +3,8 @@
 
 __author__ = 'edn-g <edn.g@free.fr>'
 
-import sys, argparse
+import argparse
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
@@ -30,7 +31,7 @@ class USBTransfer(QApplication):
             self._main_window.setCursor(Qt.BlankCursor)
 
         # Main widget
-        main_widget = QWidget(self._main_window);
+        main_widget = QWidget(self._main_window)
         self._main_window.setCentralWidget(main_widget)
 
         # Elements layout
