@@ -12,14 +12,29 @@ from PyQt4.QtGui import *
 class HeaderWidget(QLabel):
     def __init__(self):
         super(HeaderWidget, self).__init__('Raspberry USB Transfer')
-        self.setContentsMargins(4, 4, 4, 4)
-        palette = QPalette()
-        palette.setColor(QPalette.Window, Qt.darkGray)
-        palette.setColor(QPalette.WindowText, Qt.lightGray)
-        self.setAutoFillBackground(True)
-        self.setPalette(palette)
-        self.setFont(QFont("Verdana", 12, QFont.Bold))
+
+        # palette = QPalette()
+        # palette.setColor(QPalette.Window, Qt.lightGray)
+        # self.setAutoFillBackground(True)
+        # self.setPalette(palette)
+
+        self.setContentsMargins(0, 8, 0, 0)
         self.setAlignment(Qt.AlignCenter)
+        self.setFont(QFont('Helvetica', 12, QFont.DemiBold))
+
+
+class HLine(QFrame):
+    def __init__(self):
+        super(HLine, self).__init__()
+        self.setFrameShape(QFrame.HLine)
+        self.setFrameShadow(QFrame.Sunken)
+
+
+class VLine(QFrame):
+    def __init__(self):
+        super(VLine, self).__init__()
+        self.setFrameShape(QFrame.VLine)
+        self.setFrameShadow(QFrame.Sunken)
 
 
 class USBTransfer(QApplication):
@@ -51,6 +66,7 @@ class USBTransfer(QApplication):
         main_layout = QVBoxLayout(self._main_window.centralWidget())
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.addWidget(HeaderWidget())
+        main_layout.addWidget(HLine())
         main_layout.addStretch(1)
 
     # Run and display application
