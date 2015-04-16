@@ -1,4 +1,4 @@
 #!/bin/bash
 
 CURDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-while true; do python3 "$CURDIR/USBTransfer.py" 320 240 --touchscreen; sleep 2; done
+while true; do python3 "$CURDIR/USBTransfer.py" 240 320 --touchscreen; sleep 2; done
